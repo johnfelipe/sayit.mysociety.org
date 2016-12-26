@@ -70,7 +70,27 @@
       <p class="large-8 large-offset-4 columns example">{% trans 'See an example:' %} <a href="http://shakespeare.sayit.mysociety.org/">{% trans 'The complete works of Shakespeare' %}</a></p>
     </div>
   </div>
+
   <div class="sayit-homepage__start">
+   <div class="full-page__row">
+      <div class="full-page__unit">
+          <h2>{% trans 'Your Instances' %}</h2>  
+          <ul class="speaker-list">
+          {% for instance in instances %}
+                <li>
+                    <a href="http://{{ instance.label }}.{{ BASE_URL|slice:"7:" }}">
+                        <div class="speaker-card">
+                            <p><strong>{{ instance.title }}</strong></p>
+                            <span class="speaker-card__name">{{ instance.description | truncatechars:100 }}</span>
+                            <div><small>(Created by:{{ instance.created_by }} )</small></div>
+
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+          </ul>     
+       </div>
+    </div>  
     <div class="full-page__row">
       <div class="full-page__unit">
         <h2>{% trans 'Create your own SayIt and get started in seconds!' %}</h2>

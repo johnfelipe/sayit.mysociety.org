@@ -1,6 +1,5 @@
 import re
 import sys
-
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import patterns, include, url
@@ -11,6 +10,7 @@ from instances.views import InstanceUpdate
 
 # Admin section
 from django.contrib import admin
+
 admin.autodiscover()
 
 from views import ShareWithCollaborators, AcceptInvite
@@ -61,5 +61,5 @@ urlpatterns += patterns(
 
     (r'^about', include('about.urls')),
     url(r'^',
-        include('speeches.urls', app_name='speeches', namespace='speeches')),
+        include('speeches.urls', app_name='speeches', namespace='speeches')),    
 )
