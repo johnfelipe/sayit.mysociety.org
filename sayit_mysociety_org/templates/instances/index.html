@@ -6,6 +6,7 @@
 {% block instanceheader %}{% endblock %}
 
 {% block fullpage %}
+
 <div class="full-page sayit-homepage">
   <div class="sayit-homepage__hero">
     <div class="full-page__row">
@@ -13,6 +14,33 @@
         <h1>{% trans 'Bringing transcripts<br>into the Internet&nbsp;age' %}</h1>
         <p class="lead">{% trans 'SayIt is a whole new way to organise, publish,<br>and share your transcripts – and it’s free.' %}</p>
         <p><a href="/instances/add" class="button">{% trans 'Start using SayIt' %}</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="sayit-homepage__start">
+   <div class="full-page__row">
+      <div class="full-page__unit">
+          <h2>{% trans 'Your Instances' %}</h2>  
+          <ul class="speaker-list">
+          {% for instance in instances %}
+                <li>
+                    <a href="http://{{ instance.label }}.{{ BASE_URL|slice:"7:" }}">
+                        <div class="speaker-card">
+                            <p><strong>{{ instance.title }}</strong></p>
+                            <span class="speaker-card__name">{{ instance.description | truncatechars:100 }}</span>
+                            <div><small>(Created by:{{ instance.created_by }} )</small></div>
+
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+          </ul>     
+       </div>
+    </div>  
+    <div class="full-page__row">
+      <div class="full-page__unit">
+        <h2>{% trans 'Create your own SayIt and get started in seconds!' %}</h2>
+        <p><a href="/instances/add" class="button">{% trans 'Start collecting speeches with SayIt' %}</a></p>
       </div>
     </div>
   </div>
@@ -71,33 +99,7 @@
     </div>
   </div>
 
-  <div class="sayit-homepage__start">
-   <div class="full-page__row">
-      <div class="full-page__unit">
-          <h2>{% trans 'Your Instances' %}</h2>  
-          <ul class="speaker-list">
-          {% for instance in instances %}
-                <li>
-                    <a href="http://{{ instance.label }}.{{ BASE_URL|slice:"7:" }}">
-                        <div class="speaker-card">
-                            <p><strong>{{ instance.title }}</strong></p>
-                            <span class="speaker-card__name">{{ instance.description | truncatechars:100 }}</span>
-                            <div><small>(Created by:{{ instance.created_by }} )</small></div>
 
-                        </div>
-                    </a>
-                </li>
-            {% endfor %}
-          </ul>     
-       </div>
-    </div>  
-    <div class="full-page__row">
-      <div class="full-page__unit">
-        <h2>{% trans 'Create your own SayIt and get started in seconds!' %}</h2>
-        <p><a href="/instances/add" class="button">{% trans 'Start collecting speeches with SayIt' %}</a></p>
-      </div>
-    </div>
-  </div>
   <div class="sayit-homepage__developers">
     <div class="full-page__row">
       <div class="medium-10 medium-centered large-8 columns">
